@@ -23,6 +23,17 @@ class ProductItem extends StatelessWidget {
         trailing: IconButton(
           onPressed: () {
             cart.addToCart(prod.id, prod.price, prod.title);
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text("berhasil"),
+                duration: Duration(seconds: 2),
+                action: SnackBarAction(
+                  textColor: Colors.red,
+                  label: "UNDO",
+                  onPressed: () {},
+                ),
+              ),
+            );
           },
           icon: Icon(
             Icons.shopping_cart,

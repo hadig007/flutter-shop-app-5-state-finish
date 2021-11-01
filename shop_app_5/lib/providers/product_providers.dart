@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shop_app_5/models/product_model.dart';
 
-class ProductProvider with ChangeNotifier{
+class ProductProvider with ChangeNotifier {
   List<ProductModel> _items = [
     ProductModel(
-      id: 'p1',
-      title: 'Red Shirt',
-      description: 'A red shirt - it is pretty red!',
-      price: 29.99,
-      imageUrl:'https://m.media-amazon.com/images/I/51sdIP8NCjL._AC_UL1000_.jpg'
-          
-    ),
+        id: 'p1',
+        title: 'Red Shirt',
+        description: 'A red shirt - it is pretty red!',
+        price: 29.99,
+        imageUrl:
+            'https://m.media-amazon.com/images/I/51sdIP8NCjL._AC_UL1000_.jpg'),
     ProductModel(
       id: 'p2',
       title: 'Trousers',
@@ -38,19 +37,33 @@ class ProductProvider with ChangeNotifier{
   ];
 
   var _showFavorite = false;
-  List<ProductModel> get items{
-    if(_showFavorite == true){
+  List<ProductModel> get items {
+    if (_showFavorite == true) {
       return _items.where((element) => element.isFavorite).toList();
     }
     return [..._items];
   }
 
-  void showFavorites(){
+  void showFavorites() {
     _showFavorite = true;
     notifyListeners();
   }
-  void showAll(){
+
+  void showAll() {
     _showFavorite = false;
+    notifyListeners();
+  }
+
+  void addProduct(
+      String id, title, description, double price, String imageUrl) {
+    var newProduct = ProductModel(
+      id: id,
+      title: title,
+      description: description,
+      price: price,
+      imageUrl: imageUrl,
+    );
+    _items.add(newProduct);
     notifyListeners();
   }
 }

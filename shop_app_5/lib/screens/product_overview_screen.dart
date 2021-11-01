@@ -12,7 +12,7 @@ enum FilterFavorite { Favorites, All }
 
 class ProductOverviewScreen extends StatelessWidget {
   const ProductOverviewScreen({Key? key}) : super(key: key);
-  static const routeName = '/home';
+  static const routeName = "/home";
 
   @override
   Widget build(BuildContext context) {

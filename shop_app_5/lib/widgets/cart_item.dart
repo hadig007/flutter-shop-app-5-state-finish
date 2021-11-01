@@ -23,8 +23,13 @@ class CartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       direction: DismissDirection.startToEnd,
-      onDismissed: (direction){
-        Provider.of<CartProvider>(context, listen: false).removeCart(prodId!);
+      onDismissed: (direction) {
+        Provider.of<CartProvider>(
+          context,
+          listen: false,
+        ).removeCart(
+          prodId!,
+        );
       },
       background: Stack(
         children: [
